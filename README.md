@@ -8,6 +8,7 @@
 Microsoft.EntityFrameworkCore.Tools
 
 -Tools-> Nuget Package Manager-> Package Manger Console
+
 -Run these Commands
 add-migration AddCategory
 update-database  
