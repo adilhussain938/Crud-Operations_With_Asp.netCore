@@ -20,6 +20,8 @@ You should have Mircosft Sql Sevrer
 -Tools-> Nuget Package Manager-> Package Manger Console
 
 -Run these Commands
+
 add-migration AddCategory
+
 update-database  
 
