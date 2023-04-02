@@ -46,6 +46,7 @@ namespace BulkyApp.Controllers
                 //}
                 //else { 
                 _db.SaveChanges();
+                TempData["Sucess"] = "Data Saved Sucessfully";
                 return RedirectToAction("Search");
             }
             return View(obj);
@@ -79,6 +80,7 @@ namespace BulkyApp.Controllers
                 _db.Categories.Update(obj);
                 
                 _db.SaveChanges();
+                TempData["Sucess"] = "Data Edited Sucessfully";
                 return RedirectToAction("Search");
             }
             return View(obj);
@@ -94,6 +96,7 @@ namespace BulkyApp.Controllers
             var readfromdb = _db.Categories.Find(Id);
             if(readfromdb !=null)
                 _db.Categories.Remove(readfromdb);
+                TempData["Sucess"] = "Data Deleted Sucessfully";
                 _db.SaveChanges();
 
                         
