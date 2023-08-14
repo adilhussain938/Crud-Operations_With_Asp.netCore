@@ -1,0 +1,59 @@
+﻿@model BulkyBook.Models.ViewModels.ShoppingCart
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary">
+                    <h4>by: @Model.product.Author</h4>
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mt-3">
+                        <a class="navbar-brand ml-3" href="#">@Model.product.Title</a>
+                    </nav>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="isbn">ISBN : @Model.product.ISBN</label>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="list-price">List Price: @Model.product.ListPrice   </label>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="description">Description: @Model.product.Description</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="count">Count</label>
+                            </div>
+                        </div>
+                   @* </div>
+                    <div class="row mt-3">*@
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <input type="text" asp-for="count" class="form-control ml-3" id="count" name="count">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                     <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                    Back To List
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

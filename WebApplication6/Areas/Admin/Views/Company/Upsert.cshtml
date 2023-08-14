@@ -1,0 +1,96 @@
+﻿@model BulkyBook.Models.CompanyModel
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+<input asp-for="Id" hidden/>
+
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-4">
+                <div class="row pb-2">
+                    
+                    @*
+                   *<h>Create Company</h>*@
+                    <h2 class=" text-primary">@(Model.Id != 0 ? "Update" : "Create") Company</h2>
+                
+            </div>
+                @*<div asp-validation-summary="All"></div>*@
+                <div class="mb-3">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class=" form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="City"></label>
+                    <textarea asp-for="City" class=" form-control"></textarea>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PostalCode"></label>
+                    <input asp-for="PostalCode" class=" form-control" />
+                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    
+                    
+                    <label asp-for="PhoneNumber"></label>
+                    <input asp-for="PhoneNumber" class=" form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    
+                    
+                    <label asp-for="State"></label>
+                    <input asp-for="State" class=" form-control" />
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+                
+                <div class="mb-3">
+                    
+                    
+                    <label asp-for="StreetAddress"></label>
+                    <input asp-for="StreetAddress" class=" form-control" />
+                    <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:150px"> Create</button>
+                <a asp-controller="Company" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                    Back To List
+                </a>
+              
+            </div>
+
+        </div>
+        @*
+        "\\image\\Product\\42ffe489-5d95-45fd-87bd-d170729e71db.jpg"*@@*
+        C:\Users\HHH\source\repos\WebApplication6\WebApplication6\wwwroot\Images\Product\42ffe489-5d95-45fd-87bd-d170729e71db.jpg*@
+
+
+    </div> 
+    
+
+</form>
+
+@section Scripts
+{
+    @{
+      <partial name="_ValidationScriptsPartial"></partial>
+    }
+    <script>
+        function ValidateFile(){  
+        if (document.getElementById("Uploadfile").value == "")
+        {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Upload the Image!',
+                //footer: '<a href="">Why do I have this issue?</a>'
+            });
+            return false;
+            }
+            return true;
+        }
+    </script>
+}

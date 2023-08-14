@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BulkyBook.Models.CompanyModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+
+    <div  class="row pt-4" >
+        <div class="col-6">
+            <h2 class="text-primary"> Comapny List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <div class="button">
+            <a asp-controller="Company" asp-action="Upsert" class="btn btn-primary">
+                Create Company
+            </a>
+            </div>
+        </div>
+        
+    </div>
+   
+
+    <table id="TblData" class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    StreetAddress
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    State
+                </th>
+                <th>
+                    PhoneNumber
+                </th>
+                <th>
+                    PostalCode                
+                </th>
+                <th>
+                   
+                </th>
+                <th>
+                   
+                </th>
+            </tr>
+        </thead>
+    </table>
+
+</div>
+<style>
+    .button {
+        margin-bottom: 20px; /* Add margin to the bottom of the div */
+        padding-right: 10px; /* Add padding to the right of the div */
+    }
+</style>
+@section Scripts
+{
+    <script src="~/js/Company.js"></script>
+}
