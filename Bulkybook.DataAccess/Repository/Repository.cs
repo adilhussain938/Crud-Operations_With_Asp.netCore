@@ -23,11 +23,15 @@ namespace Bulkybook.DataAccess.Repository
             this.dbset = _db.Set<T>();
         }
 
-        IEnumerable<T> IRepository<T>.GetAll()
+        IEnumerable<T> IRepository<T>.GetAll(Expression<Func<T, bool>> filter =null )
         {
             IQueryable<T> query = dbset;
+            if (filter !=null)
+            { 
+            query = query.Where(filter);
+            }
             return query.ToList();
-        }
+        }   
 
         T IRepository<T>.GetFirstOrDefault(Expression<Func<T, bool>> filter)
         {

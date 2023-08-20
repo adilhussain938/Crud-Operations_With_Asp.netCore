@@ -24,6 +24,16 @@ builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddDefaultTokenProvide
 builder.Services.AddScoped<IUnitOfwork, UnitOfWork>();
 builder.Services.AddSingleton<IEmailSender, EmailaSender>();
 builder.Services.AddMvc();
+
+
+builder.Services.ConfigureApplicationCookie(
+   options => 
+   { 
+      options.LoginPath = $"/Identity/Account/Login";
+       options.LogoutPath = $"/Identity/Account/Logout";
+   }); 
+
+
 var app = builder.Build(); 
 
 // Configure the HTTP request pipeline.

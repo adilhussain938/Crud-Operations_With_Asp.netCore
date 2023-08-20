@@ -1,6 +1,7 @@
 ﻿@model BulkyBook.Models.ViewModels.ShoppingCart
-
+<form method="post">
 <div class="container mt-3">
+    <input hidden asp-for="ProductId">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -57,3 +58,4 @@
         </div>
     </div>
 </div>
+</form>

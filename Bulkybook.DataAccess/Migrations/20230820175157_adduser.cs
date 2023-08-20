@@ -4,7 +4,7 @@
 
 namespace Bulkybook.DataAccess.Migrations
 {
-    public partial class addidtotable : Migration
+    public partial class adduser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
