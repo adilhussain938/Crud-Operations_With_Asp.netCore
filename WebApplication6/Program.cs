@@ -7,6 +7,8 @@ using Bulkybook.DataAccess.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BulkyBook.Utility;
+using Stripe;
+using BulkyBook.DataAccess.DbInitializer;
 //using Microsoft.AspNet.Identity.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,10 +20,13 @@ builder.Services.AddDbContext<DBContextsol>(options => options.UseSqlServer
 (
     builder.Configuration.GetConnectionString("DefaultCont")
 ));
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+
 
 builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddDefaultTokenProviders()
     .AddEntityFrameworkStores<DBContextsol>();
 builder.Services.AddScoped<IUnitOfwork, UnitOfWork>();
+builder.Services.AddScoped<Idbinitilizer, DbInitializer>();
 builder.Services.AddSingleton<IEmailSender, EmailaSender>();
 builder.Services.AddMvc();
 
@@ -51,6 +56,8 @@ app.UseAuthentication();;
 
 app.UseAuthorization();
 app.UseRouting();
+SeedDatabase();
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 app.UseEndpoints(endpoints =>
 {
@@ -64,3 +71,13 @@ app.MapControllerRoute(
     pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<Idbinitilizer>();
+        dbInitializer.Initialize();
+    }
+}

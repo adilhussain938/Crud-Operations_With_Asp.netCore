@@ -21,8 +21,14 @@ namespace BulkyApp.Areas.Customer.Controllers
             _unitOfwork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
+            if (id==1 )
+            {
+
+                TempData["AddtoCart"] = "Added to Cart Sucessfully";
+
+            }
             IEnumerable<Product> productlist = _unitOfwork.Product.GetAll();
             return View(productlist);
         }
@@ -54,7 +60,7 @@ namespace BulkyApp.Areas.Customer.Controllers
             {
                 _unitOfwork.ShopingCartRepository.Add(shoppingCart);
                 _unitOfwork.save();
-
+                
             }
             else
             {
@@ -63,10 +69,11 @@ namespace BulkyApp.Areas.Customer.Controllers
             }
 
             _unitOfwork.save();
-            
-            return RedirectToAction(nameof(Index));
 
-       }
+            TempData["Sucess"] = "Data Saved Sucessfully";
+            return RedirectToAction("Index");
+
+        }
 
         public IActionResult Privacy()
         {

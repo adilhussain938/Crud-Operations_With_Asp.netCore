@@ -34,26 +34,24 @@
                                     <img src="https://placehold.co/500x600/png" class="card-img-top rounded w-100" />
                                 }
                             </div>
-                            <div class="col-12 col-lg-6 pt-md-3">
+                            <div class="col-3 col-lg-3 pt-md-3">
                                 <h5 class="text-uppercase text-secondary"><strong>@item.product?.Title</strong></h5>
                                 <p><small>@Html.Raw(item.product?.Description)</small></p>
                             </div>
-                            <div class="col-12  col-lg-6 text-center row">
-                                <div class="col-3 text-md-right pt-2 pt-md-4">
+                            <div class="col-3">
+                                <div class="col-5 text-md-right pt-2 pt-md-4">
                                     <h6 class="fw-semibold">
                                         Price
                                         <span class="text-muted">&nbsp;x&nbsp;</span>Count
                                     </h6>
-                                </div>
-                             </div>
-                            <div class="col-12  col-lg-5 text-center row">
-                                
-                                <div class="col-3 text-md-right pt-2 pt-md-4">
-                                    <h6 class="fw-semibold">
+                                     <h6 class="fw-semibold">
                                         @item.product?.Price.ToString("c")
                                         <span class="text-muted">&nbsp;x&nbsp;</span>@item.count
                                     </h6>
                                 </div>
+                                
+                             </div>
+                            <div class="col-12  col-lg-5 text-center row">                                
                                 <div class="col-6 col-sm-4 col-lg-6 pt-2">
                                     <div class="w-75 btn-group" role="group">
                                         <a asp-action="plus" asp-route-cartId="@item.ProductId" class="btn btn-outline-primary bg-gradient py-2">

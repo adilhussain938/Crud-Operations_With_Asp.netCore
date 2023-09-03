@@ -9,6 +9,17 @@
     @*
     <h2>@TempData["Sucess"]</h2>*@
 }
+@if (TempData["AddtoCart"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["AddtoCart"]');
+    </script>
+
+    @*
+    <h2>@TempData["Sucess"]</h2>*@
+}
 @if (TempData["Error"] != null)
 {
 

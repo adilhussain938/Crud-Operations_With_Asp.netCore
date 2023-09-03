@@ -1,5 +1,6 @@
 ﻿@model BulkyBook.Models.ViewModels.ShoppingCartVm
-
+@using Microsoft.Extensions.Options
+@inject IOptions<BulkyBook.Utility.StripeSettings> Stripe
 
 <form method="post">
 	<br />
@@ -85,7 +86,7 @@
 								<span class="text-info">Order Summary:</span>
 							</h4>
 							<ul class="list-group mb-3">
-								@if(Model.ListCart !=null)
+								@if(Model?.ListCart !=null)
 								{
 									@foreach(var details in Model?.ListCart)
 									{
@@ -100,7 +101,7 @@
 							    }
 								<li class="list-group-item d-flex justify-content-between bg-light">
 									<small class="text-info">Total (USD)</small>
-									<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("c")</strong>
+									<strong class="text-info">@Model?.OrderHeader?.OrderTotal</strong>
 								</li>
 							</ul>
 						</div>
